@@ -218,19 +218,67 @@ tbody tr:hover {
 
 }
 
+/* BOTÕES DA BUSCA - VERSÃO 4 */
+
+#btn-pesquisar {
+    background-color: #b700ff;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#btn-pesquisar:hover {
+    background-color: #8817ca;
+    box-shadow: 0 0 15px #b95af8;
+    transform: scale(1.10);
+}
+
+#btn-limpar-busca {
+    background-color: #ff00d4;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+#btn-limpar-busca:hover {
+    background-color: #ca179d;
+    box-shadow: 0 0 15px #f85af8;
+    transform: scale(1.10);
+}
+
 /* Footer */
 footer {
     background: #2c3e50;
     color: #fff;
-    text-align: center;
-    padding: 15px;
+    padding: 10px 20px;
     width: 100%;
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centraliza o texto */
+    z-index: 1000;
+    height: 75px;
 }
 
 footer h4 {
     margin: 0;
     font-weight: normal;
+    text-align: center;
+    width: 100%;
+}
+
+/* FOTO REDONDA NA DIREITA */
+.foto-footer {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    object-fit: cover;
+    position: absolute; /* trava ela na direita */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }

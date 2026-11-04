@@ -51,30 +51,28 @@ const btnLimparTudo = document.getElementById("limpar-tabela");
 const totalEstoqueEl = document.getElementById("total-estoque");
 const btnSubmit = document.querySelector(".btn-primary");
 
-//NOVIDADE V4: Captura do novo elemento de input de busca
+// CORRIGIDO V4: faltava o # no querySelector, por isso campoBusca vinha null
+const campoBusca = document.getElementById("campo-busca");
+const btnPesquisar = document.getElementById("btn-pesquisar");
+const btnLimparBusca = document.getElementById("btn-limpar-busca");
 
-const campoBusca = document.querySelector("campo-busca");
+// NOVIDADE V4: Função inteligente de filtragem (.filter())
+// A função analisa o que foi digitado
+// Produtos que correspondem ao filtro
+function obterProdutosFiltrados() {
 
-//NOVIDADE V4: Função inteligente de filtragem (.filter())
-//A função analisa oque foi digitado
-//Produtos que correspondem ao filtro
-function obterProdutosfiltrados(){
-
-    //Sanitizar o termo de busca e converter para minúsculas
+    // Sanitizar o termo de busca e converter para minúsculas
     const termo = campoBusca.value.trim().toLowerCase();
 
-    //Se a busca estiver vazia, retorna a lista completa
-    if(!termo){
-
+    // Se a busca estiver vazia, retorna a lista completa
+    if (!termo) {
         return listaDeProdutos;
-
     }
 
-    //Usa método de alta performance .filter()
+    // Usa método de alta performance .filter()
     return listaDeProdutos.filter(produto => produto.nome.toLowerCase().includes(termo));
 
 }
-
 
 //
 // FASE 4: Escuta de Eventos - COM VALIDAÇÃO
@@ -139,6 +137,26 @@ btnLimparTudo.addEventListener("click", function () {
     }
 });
 
+// 3. NOVO V4: Pesquisar no Estoque - Botão Pesquisar
+btnPesquisar.addEventListener("click", function () {
+    atualizarInterface();
+});
+
+// 4. NOVO V4: Limpar Busca - volta a mostrar tudo
+btnLimparBusca.addEventListener("click", function () {
+    campoBusca.value = "";
+    atualizarInterface();
+    campoBusca.focus();
+});
+
+// 5. NOVO V4: Pesquisar ao apertar Enter no campo de busca
+campoBusca.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        atualizarInterface();
+    }
+});
+
 //
 // FASE 5: Funções de Atualização e Renderização
 //
@@ -184,12 +202,18 @@ function atualizarTotalEstoque() {
     totalEstoqueEl.textContent = `Total em Estoque: R$ ${total.toFixed(2)}`;
 }
 
-// Renderizar com botão Editar - CORRIGIDO
+// Renderizar com botão Editar - CORRIGIDO V4: agora usa a lista filtrada
 function renderizarTabela() {
     const tabelaBody = document.querySelector("#tabela-produtos tbody");
     tabelaBody.innerHTML = "";
 
-    listaDeProdutos.forEach((produto, index) => {
+    const produtosExibidos = obterProdutosFiltrados();
+
+    produtosExibidos.forEach((produto) => {
+        // CORREÇÃO IMPORTANTE: pega o índice REAL na lista completa,
+        // senão ao filtrar, Editar/Remover pegam o produto errado
+        const index = listaDeProdutos.indexOf(produto);
+
         const linha = document.createElement("tr");
 
         linha.innerHTML = `
