@@ -37,56 +37,99 @@
 
         </form>
 
-        <!--ALETRAÇÕES DA VERSÃO 4-->
+        <button id="btn-bootstrap" type="button">Ver Conceito Bootstrap</button>
 
+        <div id="modal-bootstrap" class="modal-overlay" hidden>
+            <div class="modal">
+                <h2>Como o Bootstrap aceleraria a nossa interface</h2>
+
+                <p>Bootstrap é uma biblioteca de CSS e JavaScript com componentes prontos. Neste projeto escrevemos o
+                    CSS e os modais à mão; com o Bootstrap, a maior parte disso viria pronta, bastando adicionar classes
+                    ao HTML.</p>
+
+                <ul>
+                    <li><strong>Sistema de grid e container:</strong> As classes container, row e col-* organizam o
+                        layout e se adaptam sozinhas a celulares e telas grandes, no lugar do nosso .container e das
+                        media queries.</li>
+                    <li><strong>Formulários e botões prontos:</strong> form-control, form-label, btn btn-primary e btn
+                        btn-danger substituem o estilo que escrevemos para inputs e botões, com hover e foco já
+                        incluídos.</li>
+                    <li><strong>Alertas no lugar da nossa mensagem de erro:</strong> A caixa vermelha de validação seria
+                        um componente alert alert-danger, com variações de cor para sucesso, aviso e informação.</li>
+                    <li><strong>Modal nativo da biblioteca:</strong> O nosso modal de confirmação equivale ao componente
+                        Modal do Bootstrap, que já cuida de fundo escuro, tecla Esc, foco e acessibilidade, usando
+                        data-bs-toggle e data-bs-target.</li>
+                    <li><strong>Tabelas estilizadas:</strong> Com table table-striped table-hover a listagem de produtos
+                        ganha linhas zebradas e destaque ao passar o mouse sem CSS extra.</li>
+                </ul>
+
+                <p><strong>Exemplo: nossa mensagem de erro em Bootstrap</strong></p>
+
+                <pre><code>&lt;div class="alert alert-danger" role="alert"&gt;
+  Informe o nome do produto.
+&lt;/div&gt;</code></pre>
+
+                <p>Para usar, basta incluir o link do CSS e o script do Bootstrap (via CDN) no index.html.</p>
+
+                <div class="modal-botoes">
+                    <button type="button" id="modal-bootstrap-fechar">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+        <!--ALETRAÇÕES DA VERSÃO 4-->
         <div class="busca-container">
 
-            <label for="campo-busca">Pesquisar no Estoque:</label>
-            <input type="text" id="campo-busca" placeholder="Digite o nome do produto para filtrar">
+            <!--ALETRAÇÕES DA VERSÃO 4-->
 
-            <!-- NOVO: BOTÃO PESQUISAR -->
-            <button id="btn-pesquisar" type="button">Pesquisar</button>
-            <button id="btn-limpar-busca" type="button">Limpar Busca</button>
+            <div class="busca-container">
+
+                <label for="campo-busca">Pesquisar no Estoque:</label>
+                <input type="text" id="campo-busca" placeholder="Digite o nome do produto para filtrar">
+
+                <!-- NOVO: BOTÃO PESQUISAR -->
+                <button id="btn-pesquisar" type="button">Pesquisar</button>
+                <button id="btn-limpar-busca" type="button">Limpar Busca</button>
+
+            </div>
+
+            <div class="resumo-container">
+
+                <h3 id="total-estoque">
+                    Total em Estoque: R$ 0,00
+                </h3>
+
+                <button id="limpar-tabela" class="btn-danger" type="button">
+                    Limpar Tudo
+                </button>
+
+            </div>
+
+            <table id="tabela-produtos">
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço Un.</th>
+                        <th>Qtd.</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
 
         </div>
-
-        <div class="resumo-container">
-
-            <h3 id="total-estoque">
-                Total em Estoque: R$ 0,00
-            </h3>
-
-            <button id="limpar-tabela" class="btn-danger" type="button">
-                Limpar Tudo
-            </button>
-
-        </div>
-
-        <table id="tabela-produtos">
-
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Preço Un.</th>
-                    <th>Qtd.</th>
-                    <th>Subtotal</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-
-            <tbody>
-            </tbody>
-
-        </table>
-
-    </div>
 
         <footer>
             <img src="apenas.jpg" alt="Foto dos desenvolvedores" class="foto-footer">
             <h4>Este Programa foi desenvolvido por: Vitor Marcelo Loffler e Lucas Wessner</h4>
         </footer>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 
 </body>
 

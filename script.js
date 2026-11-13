@@ -249,3 +249,30 @@ function atualizarInterface() {
 //
 carregarDoLocalStorage();
 atualizarInterface();
+
+//
+// FASE 7: Inicialização
+//
+const btnBootstrap = document.getElementById("btn-bootstrap");
+const modalBootstrap = document.getElementById("modal-bootstrap");
+const modalBootstrapFechar = document.getElementById("modal-bootstrap-fechar");
+
+btnBootstrap.addEventListener("click", () => {
+  modalBootstrap.hidden = false;
+  modalBootstrapFechar.focus();
+});
+
+function fecharModalBootstrap() {
+  modalBootstrap.hidden = true;
+  btnBootstrap.focus();
+}
+
+modalBootstrapFechar.addEventListener("click", fecharModalBootstrap);
+
+modalBootstrap.addEventListener("click", (e) => {
+  if (e.target === modalBootstrap) fecharModalBootstrap();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modalBootstrap.hidden) fecharModalBootstrap();
+});

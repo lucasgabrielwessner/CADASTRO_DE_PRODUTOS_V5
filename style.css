@@ -282,3 +282,72 @@ footer h4 {
     top: 50%;
     transform: translateY(-50%);
 }
+
+#btn-bootstrap {
+  background: #6f42c1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 16px;
+}
+
+/* Ver Conceito - pequeno e no meio */
+#btn-bootstrap {
+    display: block;
+    margin: 18px auto;
+    padding: 8px 16px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.modal-overlay[hidden] { display: none !important; }
+
+.modal {
+  background: #fff;
+  color: #000;
+  padding: 22px;
+  border-radius: 8px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modal ul { padding-left: 20px; }
+.modal li { margin-bottom: 10px; }
+
+.modal pre {
+  background: #1e2a3a;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+#modal-bootstrap-fechar {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
